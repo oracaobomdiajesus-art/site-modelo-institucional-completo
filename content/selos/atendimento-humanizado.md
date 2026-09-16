@@ -1,6 +1,6 @@
 ---
 icone: "fa-solid fa-heart"
-texto: "Atendimento Humano"
+texto: "Atendimento Humanizado"
 peso: 1
 _build:
   render: never
