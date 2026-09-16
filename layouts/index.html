@@ -85,7 +85,7 @@
         {{ with .Params.icone }}
         <div class="servico-icone"><i class="{{ . }}"></i></div>
         {{ end }}
-        <h3>{{ .Params.title }}</h3>
+        <h3>{{ .Title }}</h3>
         <p>{{ .Params.descricao }}</p>
         {{ if and .Params.botao_texto .Params.botao_url }}
         <a class="btn btn-outline btn-small" href="{{ .Params.botao_url }}" target="_blank" rel="noopener">{{ .Params.botao_texto }}</a>
@@ -106,14 +106,15 @@
     {{ if $vitrineSection }}
     <div class="vitrine-grid">
       {{ range sort $vitrineSection.Pages "Params.peso" }}
+      {{ $item := . }}
       <div class="vitrine-card">
-        {{ with .Params.foto }}<img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+        {{ with $item.Params.foto }}<img src="{{ . | relURL }}" alt="{{ $item.Title }}" loading="lazy">{{ end }}
         <div class="vitrine-info">
-          <h3>{{ .Params.title }}</h3>
-          <p>{{ .Params.descricao }}</p>
-          {{ if and .Params.botao_texto .Params.botao_url }}
-          <a class="btn btn-primary btn-small" href="{{ .Params.botao_url }}" target="_blank" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i> {{ .Params.botao_texto }}
+          <h3>{{ $item.Title }}</h3>
+          <p>{{ $item.Params.descricao }}</p>
+          {{ if and $item.Params.botao_texto $item.Params.botao_url }}
+          <a class="btn btn-primary btn-small" href="{{ $item.Params.botao_url }}" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> {{ $item.Params.botao_texto }}
           </a>
           {{ end }}
         </div>
@@ -132,11 +133,12 @@
     </div>
     <div class="blog-grid">
       {{ range first 3 (sort $blogSection.Pages "Date" "desc") }}
-      <a class="blog-card" href="{{ .RelPermalink }}">
-        {{ with .Params.capa }}<img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+      {{ $post := . }}
+      <a class="blog-card" href="{{ $post.RelPermalink }}">
+        {{ with $post.Params.capa }}<img src="{{ . | relURL }}" alt="{{ $post.Title }}" loading="lazy">{{ end }}
         <div class="blog-card-info">
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Params.resumo }}</p>
+          <h3>{{ $post.Title }}</h3>
+          <p>{{ $post.Params.resumo }}</p>
         </div>
       </a>
       {{ end }}
