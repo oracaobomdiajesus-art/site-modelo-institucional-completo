@@ -26,6 +26,10 @@ sobre_foto2: "/img/sobre-detalhe.svg"
 servicos_titulo: "Nossos Tratamentos"
 servicos_subtitulo: "Cuidado personalizado para cada necessidade"
 
+cardapio_ativo: true
+cardapio_titulo: "Tabela de Preços"
+cardapio_subtitulo: "Confira nossos valores"
+
 produtos_ativo: true
 produtos_titulo: "Vale-Presente e Pacotes"
 produtos_subtitulo: "Presenteie quem você ama com bem-estar"
