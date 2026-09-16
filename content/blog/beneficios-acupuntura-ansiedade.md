@@ -1,7 +1,7 @@
 ---
 title: "5 Benefícios da Acupuntura para Ansiedade"
 date: 2026-08-10
-capa: ""
+capa: "/img/blog-ansiedade.svg"
 resumo: "Descubra como a acupuntura pode ajudar a reduzir os sintomas de ansiedade no dia a dia."
 ---
 

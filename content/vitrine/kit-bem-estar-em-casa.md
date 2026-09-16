@@ -1,5 +1,5 @@
 ---
-foto: ""
+foto: "/img/vitrine-kit-casa.svg"
 title: "Kit Bem-Estar em Casa"
 descricao: "Sementes auriculares, ventosas e guia de automassagem para continuar o cuidado em casa."
 botao_texto: "Comprar pelo WhatsApp"

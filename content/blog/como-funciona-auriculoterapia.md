@@ -1,7 +1,7 @@
 ---
 title: "Como Funciona a Auriculoterapia?"
 date: 2026-08-25
-capa: ""
+capa: "/img/blog-auriculoterapia.svg"
 resumo: "Entenda a técnica milenar que trata todo o corpo através de pontos na orelha."
 ---
 

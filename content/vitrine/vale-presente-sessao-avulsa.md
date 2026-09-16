@@ -1,5 +1,5 @@
 ---
-foto: ""
+foto: "/img/vitrine-vale-presente.svg"
 title: "Vale-Presente - Sessão Avulsa"
 descricao: "Presenteie alguém especial com uma sessão de acupuntura. Válido por 6 meses."
 botao_texto: "Consultar Valor"

@@ -1,5 +1,5 @@
 ---
-foto: ""
+foto: "/img/vitrine-pacote-sessoes.svg"
 title: "Pacote 5 Sessões"
 descricao: "Faça o tratamento completo com desconto especial em relação às sessões avulsas."
 botao_texto: "Saber Mais"
