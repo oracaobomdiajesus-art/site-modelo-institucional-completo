@@ -6,6 +6,8 @@ whatsapp_url: "https://wa.me/5511940028922"
 instagram_url: "https://instagram.com/equilibrioacupuntura"
 endereco: "Rua das Flores, 245 - Jardim Paulista, São Paulo - SP"
 tema_cor: verde
+cor_primaria: ""
+cor_secundaria: ""
 fundo_ativo: false
 fundo_foto: ""
 fundo_opacidade: 40
