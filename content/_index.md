@@ -41,4 +41,8 @@ aviso_texto: "🌿 Primeira consulta com avaliação gratuita — agende pelo Wh
 
 blog_ativo: true
 blog_titulo: "Blog"
+
+parceiros_ativo: false
+parceiros_titulo: "Nossos Parceiros"
+parceiros_subtitulo: "Profissionais e clínicas parceiras que recomendamos"
 ---
