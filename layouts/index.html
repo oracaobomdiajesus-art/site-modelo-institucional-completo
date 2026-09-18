@@ -118,11 +118,19 @@
         <ul class="cardapio-lista">
           {{ range $itensCardapio }}
           {{ if eq .Params.categoria $categoriaAtual }}
+          {{ $temPromo := and .Params.em_promocao .Params.preco_promocional }}
           <li class="cardapio-item">
             <div class="cardapio-item-linha">
               <span class="cardapio-nome">{{ .Title }}</span>
               <span class="cardapio-pontilhado"></span>
-              <span class="cardapio-preco">{{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}</span>
+              <span class="cardapio-preco">
+                {{ if $temPromo }}
+                <span class="price-original">{{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}</span>
+                <span class="price-promo">{{ printf "R$ %.2f" (mul .Params.preco_promocional 1.0) | replaceRE "\\." "," }}</span>
+                {{ else }}
+                {{ printf "R$ %.2f" (mul .Params.preco 1.0) | replaceRE "\\." "," }}
+                {{ end }}
+              </span>
             </div>
             {{ with .Params.descricao }}<p class="cardapio-desc">{{ . }}</p>{{ end }}
           </li>
@@ -146,11 +154,33 @@
     <div class="vitrine-grid">
       {{ range sort $vitrineSection.Pages "Params.peso" }}
       {{ $item := . }}
+      {{ $temPromo := and $item.Params.em_promocao $item.Params.preco_promocional }}
       <div class="vitrine-card">
-        {{ with $item.Params.foto }}<img src="{{ . | relURL }}" alt="{{ $item.Title }}" loading="lazy">{{ end }}
+        <div class="vitrine-photo-wrap">
+          {{ with $item.Params.foto }}<img src="{{ . | relURL }}" alt="{{ $item.Title }}" loading="lazy">{{ end }}
+          {{ if $item.Params.em_promocao }}<span class="promo-badge">🔥 Promoção</span>{{ end }}
+        </div>
         <div class="vitrine-info">
           <h3>{{ $item.Title }}</h3>
           <p>{{ $item.Params.descricao }}</p>
+          {{ if $item.Params.preco }}
+          <p class="vitrine-preco">
+            {{ if $temPromo }}
+            <span class="price-original">{{ printf "R$ %.2f" (mul $item.Params.preco 1.0) | replaceRE "\\." "," }}</span>
+            <span class="price-promo">{{ printf "R$ %.2f" (mul $item.Params.preco_promocional 1.0) | replaceRE "\\." "," }}</span>
+            {{ else }}
+            {{ printf "R$ %.2f" (mul $item.Params.preco 1.0) | replaceRE "\\." "," }}
+            {{ end }}
+          </p>
+          {{ end }}
+          {{ if isset $item.Params "estoque_site" }}
+            {{ $estoqueSite := $item.Params.estoque_site }}
+            {{ if eq $estoqueSite 0 }}
+            <p class="product-stock esgotado">Esgotado</p>
+            {{ else if gt $estoqueSite 0 }}
+            <p class="product-stock baixo">Restam {{ $estoqueSite }} unidade{{ if gt $estoqueSite 1 }}s{{ end }}!</p>
+            {{ end }}
+          {{ end }}
           {{ if and $item.Params.botao_texto $item.Params.botao_url }}
           <a class="btn btn-primary btn-small" href="{{ $item.Params.botao_url }}" target="_blank" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i> {{ $item.Params.botao_texto }}
